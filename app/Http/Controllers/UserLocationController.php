@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Country;
 use Illuminate\Http\Request;
 
-class CompanyController extends Controller
+class UserLocationController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -20,10 +19,8 @@ class CompanyController extends Controller
      */
     public function create()
     {
-        // $countries = Country::all();
-        // return view('livewire.company.create');
-        // return view('companies.create', compact('countries'));
-        return view('companies.create');
+        // return view('livewire.user-location.create');
+        return view('locations.create');
     }
 
     /**

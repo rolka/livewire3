@@ -3,6 +3,7 @@
 namespace App\Livewire;
 
 use App\Models\City;
+use App\Models\Company;
 use App\Models\Country;
 use Illuminate\Support\Collection;
 use Livewire\Attributes\Title;
