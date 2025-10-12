@@ -46,7 +46,7 @@ class CompanyEdit extends Component
 
     public function render(): View
     {
-        return view('livewire.company-edit');
+        return view('livewire.company-edit')->title('Edit Company ' . $this->name);
     }
 
     public function save(): void

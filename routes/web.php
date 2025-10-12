@@ -2,6 +2,9 @@
 
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\UserLocationController;
+use App\Livewire\CompanyCreate;
+use App\Livewire\CompanyEdit;
+use App\Livewire\LocationCreate;
 use Illuminate\Support\Facades\Route;
 use Laravel\Fortify\Features;
 use Livewire\Volt\Volt;
@@ -17,8 +20,13 @@ Route::view('dashboard', 'dashboard')
 Route::middleware(['auth'])->group(function () {
     Route::redirect('settings', 'settings/profile');
 
-    Route::resource('companies', CompanyController::class);
-    Route::resource('locations', UserLocationController::class);
+    // Route::resource('companies', CompanyController::class);
+    Route::get('companies/create', CompanyCreate::class)
+        ->name('companies.create');
+    Route::get('companies/{company}/edit', CompanyEdit::class)->name('companies.edit');
+
+    // Route::resource('locations', UserLocationController::class);
+    Route::get('locations/create', LocationCreate::class)->name('locations.create');;
 
     Volt::route('settings/profile', 'settings.profile')->name('profile.edit');
     Volt::route('settings/password', 'settings.password')->name('password.edit');

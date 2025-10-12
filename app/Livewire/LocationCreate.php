@@ -7,9 +7,13 @@ use App\Models\Country;
 use App\Models\UserLocation;
 use Illuminate\Support\Collection;
 use Illuminate\Validation\ValidationException;
+use Livewire\Attributes\Layout;
+use Livewire\Attributes\Title;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
 
+#[Title('Create Location')]
+// #[Layout('components.layouts.app')]
 class LocationCreate extends Component
 {
     // public $countries = [];

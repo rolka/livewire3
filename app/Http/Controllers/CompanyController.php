@@ -24,7 +24,7 @@ class CompanyController extends Controller
         // $countries = Country::all();
         // return view('livewire.company.create');
         // return view('companies.create', compact('countries'));
-        return view('companies.create');
+        // return view('companies.create');
     }
 
     /**
