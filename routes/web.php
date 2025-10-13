@@ -5,6 +5,7 @@ use App\Http\Controllers\UserLocationController;
 use App\Livewire\CompanyCreate;
 use App\Livewire\CompanyEdit;
 use App\Livewire\LocationCreate;
+use App\Livewire\ViewPost;
 use Illuminate\Support\Facades\Route;
 use Laravel\Fortify\Features;
 use Livewire\Volt\Volt;
@@ -24,6 +25,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('companies/create', CompanyCreate::class)
         ->name('companies.create');
     Route::get('companies/{company}/edit', CompanyEdit::class)->name('companies.edit');
+
+    Route::get('post/{post}', ViewPost::class)->name('posts.show');
 
     // Route::resource('locations', UserLocationController::class);
     Route::get('locations/create', LocationCreate::class)->name('locations.create');;
