@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\Comment;
+use App\Models\Post;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -23,6 +25,14 @@ class DatabaseSeeder extends Seeder
             CountrySeeder::class,
             CitySeeder::class,
         ]);
-
+        // foreach (range(1, 5) as $i) {
+        //     Post::factory()
+        //         ->hasComments(rand(3, 8))
+        //         ->create();
+        // }
+        Post::factory()
+            ->count(5)
+            ->hasComments(fake()->numberBetween(1, 8))
+            ->create();
     }
 }
