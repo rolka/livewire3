@@ -35,7 +35,10 @@
                 </span>
                     </td>
                     <td class="px-6 py-4 space-x-2">
-                        <flux:button href="#" variant="filled">{{ __('Edit') }}</flux:button>
+{{--                        <flux:button href="#" variant="filled">{{ __('Edit') }}</flux:button>--}}
+
+                        <flux:button href="{{ route('tasks.edit', $task) }}" variant="filled" wire:click="update({{ $task }})">{{ __('Edit') }}</flux:button>
+
 {{--                        <flux:button variant="danger" type="button">{{ __('Delete') }}</flux:button>--}}
 
 {{--                        <flux:button wire:confirm="Are you sure?" wire:click="delete({{ $task->id }})" variant="danger" type="button">{{ __('Delete') }}</flux:button>--}}
