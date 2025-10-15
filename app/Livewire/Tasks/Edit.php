@@ -14,6 +14,8 @@ class Edit extends Component
 
     #[Validate('nullable|boolean')]
     public bool $is_completed;
+    #[Validate('nullable|date')]
+    public null|string $due_date = null;
 
     public Task $task;
 
@@ -22,6 +24,7 @@ class Edit extends Component
         $this->task = $task;
         $this->name = $task->name;
         $this->is_completed = $task->is_completed;
+        $this->due_date = $task->due_date?->format('Y-m-d');
     }
 
     public function render(): View
@@ -35,6 +38,7 @@ class Edit extends Component
         $this->task->update([
             'name' => $this->name,
             'is_completed' => $this->is_completed,
+            'due_date' => $this->due_date,
         ]);
         session()->flash('success', 'Task updated successfully.');
         $this->redirectRoute('tasks.index', navigate: true);

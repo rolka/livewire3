@@ -11,7 +11,11 @@
             wire:model="is_completed"
             label="Completed?"
         />
-
+        <flux:input
+            wire:model="due_date"
+            type="date"
+            :label="__('Due Date')"
+        />
         <div>
             <flux:button variant="primary" type="submit">{{ __('Save') }}</flux:button>
         </div>
