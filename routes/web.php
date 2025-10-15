@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Route;
 use Laravel\Fortify\Features;
 use Livewire\Volt\Volt;
 use App\Livewire\Tasks;
+use App\Livewire\TaskCategories;
 
 Route::get('/', function () {
     return view('welcome');
@@ -32,6 +33,11 @@ Route::middleware(['auth'])->group(function () {
     Route::get('tasks', Tasks\Index::class)->name('tasks.index');
     Route::get('tasks/create', Tasks\Create::class)->name('tasks.create');
     Route::get('tasks/{task}/edit', Tasks\Edit::class)->name('tasks.edit');
+
+    Route::get('task-categories', TaskCategories\Index::class)->name('task-categories.index');
+    Route::get('task-categories/create', TaskCategories\Create::class)->name('task-categories.create');
+    Route::get('task-categories/{taskCategory}/edit', TaskCategories\Edit::class)->name('task-categories.edit');
+
 
 
     // Route::resource('locations', UserLocationController::class);

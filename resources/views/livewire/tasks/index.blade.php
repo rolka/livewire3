@@ -3,6 +3,7 @@
 
     <div class="flex flex-grow gap-x-4 mb-4">
         <flux:button href="{{ route('tasks.create') }}" variant="filled">{{ __('Create Task') }}</flux:button>
+        <flux:button href="{{ route('task-categories.index') }}" variant="filled">{{ __('Manage Task Categories') }}</flux:button>
     </div>
 
     <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
