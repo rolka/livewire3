@@ -11,6 +11,11 @@
             type="date"
             :label="__('Due Date')"
         />
+        <flux:input
+            wire:model="media"
+            type="file"
+            :label="__('Media')"
+        />
         <div>
             <flux:button variant="primary" type="submit">{{ __('Save') }}</flux:button>
         </div>
