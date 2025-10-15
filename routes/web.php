@@ -9,6 +9,7 @@ use App\Livewire\ViewPost;
 use Illuminate\Support\Facades\Route;
 use Laravel\Fortify\Features;
 use Livewire\Volt\Volt;
+use App\Livewire\Tasks;
 
 Route::get('/', function () {
     return view('welcome');
@@ -27,6 +28,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('companies/{company}/edit', CompanyEdit::class)->name('companies.edit');
 
     Route::get('post/{post}', ViewPost::class)->name('posts.show');
+
+    Route::get('tasks', Tasks\Index::class)->name('tasks.index');
+
 
     // Route::resource('locations', UserLocationController::class);
     Route::get('locations/create', LocationCreate::class)->name('locations.create');;
