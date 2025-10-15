@@ -30,6 +30,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('post/{post}', ViewPost::class)->name('posts.show');
 
     Route::get('tasks', Tasks\Index::class)->name('tasks.index');
+    Route::get('tasks/create', Tasks\Create::class)->name('tasks.create');
 
 
     // Route::resource('locations', UserLocationController::class);

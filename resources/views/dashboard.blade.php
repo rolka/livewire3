@@ -16,6 +16,9 @@
                         <a href="{{ route('tasks.index') }}" wire:navigate.hover class="block p-3 rounded-lg border border-gray-300 hover:bg-gray-100">
                             Tasks
                         </a>
+                        <a href="{{ route('tasks.create') }}" wire:navigate.hover class="block p-3 rounded-lg border border-gray-300 hover:bg-gray-100">
+                            Create new Task
+                        </a>
                     </nav>
                 </div>
             </div>
