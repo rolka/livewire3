@@ -30,7 +30,9 @@ class Edit extends Component
     }
     public function render(): View
     {
-        return view('livewire.task-categories.edit');
+        return view('livewire.task-categories.edit', [
+            'categories' => TaskCategory::all(),
+        ]);
     }
 
 

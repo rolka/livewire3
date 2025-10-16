@@ -3,6 +3,7 @@
 namespace App\Livewire\Tasks;
 
 use App\Models\Task;
+use App\Models\TaskCategory;
 use Illuminate\View\View;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
@@ -26,18 +27,27 @@ class Edit extends Component
 
     public Task $task;
 
-    public function mount(Task $task)
+    #[Validate([
+        'selectedCategories'   => ['nullable', 'array'],
+        'selectedCategories.*' => ['exists:task_categories,id'],
+    ])]
+    public array $selectedCategories = [];
+
+    public function mount(Task $task): void
     {
         $this->task = $task;
-        $this->task->load('media');
+        $this->task->load('media', 'taskCategories');;
         $this->name = $task->name;
         $this->is_completed = $task->is_completed;
         $this->due_date = $task->due_date?->format('Y-m-d');
+        $this->selectedCategories = $task->taskCategories->pluck('id')->toArray();
     }
 
     public function render(): View
     {
-        return view('livewire.tasks.edit');
+        return view('livewire.tasks.edit', [
+            'categories' => TaskCategory::all(),
+        ]);
     }
 
     public function save()
@@ -52,6 +62,7 @@ class Edit extends Component
             $this->task->getFirstMedia()?->delete();
             $this->task->addMedia($this->media)->toMediaCollection();
         }
+        $this->task->taskCategories()->sync($this->selectedCategories ?? []);
         session()->flash('success', 'Task updated successfully.');
         $this->redirectRoute('tasks.index', navigate: true);
 

@@ -3,6 +3,7 @@
 namespace App\Livewire\Tasks;
 
 use App\Models\Task;
+use App\Models\TaskCategory;
 use Illuminate\View\View;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
@@ -22,9 +23,18 @@ class Create extends Component
     #[Validate('nullable|file|max:1024')]
     public $media;
 
+    #[Validate([
+        'selectedCategories'   => ['nullable', 'array'],
+        'selectedCategories.*' => ['exists:task_categories,id'],
+    ])]
+
+    public array $selectedCategories = [];
+
     public function render(): View
     {
-        return view('livewire.tasks.create');
+        return view('livewire.tasks.create', [
+            'categories' => TaskCategory::all(),
+        ]);
     }
     public function save(): void
     {
@@ -37,6 +47,7 @@ class Create extends Component
         if ($this->media) {
             $task->addMedia($this->media)->toMediaCollection();
         }
+        $task->taskCategories()->sync($this->selectedCategories);
         session()->flash('success', 'Task created successfully.');
         $this->redirectRoute('tasks.index');
     }

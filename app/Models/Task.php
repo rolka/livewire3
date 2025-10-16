@@ -31,7 +31,7 @@ class Task extends Model implements HasMedia
             'due_date' => 'date',
         ];
     }
-    public function taskCategories (): BelongsToMany
+    public function taskCategories(): BelongsToMany
     {
         return $this->belongsToMany(TaskCategory::class);
     }

@@ -19,6 +19,8 @@
 
                     <flux:navlist.item icon="briefcase" :href="route('tasks.create')" :current="request()->routeIs('tasks.create')" wire:navigate>{{ __('Create a Task') }}</flux:navlist.item>
 
+                    <flux:navlist.item icon="briefcase" :href="route('task-categories.index')" :current="request()->routeIs('task-categories.index')" wire:navigate>{{ __('Task Categories') }}</flux:navlist.item>
+
                 </flux:navlist.group>
             </flux:navlist>
 
